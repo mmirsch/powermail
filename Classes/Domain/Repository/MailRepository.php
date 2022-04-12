@@ -136,7 +136,7 @@ class MailRepository extends AbstractRepository
         $query->getQuerySettings()->setIgnoreEnableFields(true);
         $fieldRepository = $this->objectManager->get(FieldRepository::class);
         $and = [
-            $query->equals('answers.field', $fieldRepository->findByMarkerAndForm($marker, $form->getUid())),
+            $query->equals('answers.field', $fieldRepository->findByMarkerAndForm($marker, $form->getUid())->getUid()),
             $query->equals('answers.value', $value),
             $query->equals('pid', $pageUid)
         ];
